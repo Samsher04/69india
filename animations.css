@@ -1,0 +1,341 @@
+/* ============================================================
+   LUXMODEL — animations.css
+   ============================================================ */
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spinReverse { to { transform: rotate(-360deg); } }
+@keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Tilt card — done via JS, but transitions here */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease;
+}
+.tilt-card-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.15) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+.tilt-card:hover .tilt-card-shine { opacity: 1; }
+
+/* ============================================================
+   ANIMATED GRADIENT BACKGROUND
+   ============================================================ */
+.animated-gradient-bg {
+  background: linear-gradient(270deg, #ff2d78, #a855f7, #3b82f6, #06b6d4);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* ============================================================
+   GLOW RING ANIMATION
+   ============================================================ */
+.glow-ring {
+  position: relative;
+}
+.glow-ring::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--angle, 0deg), transparent 10%, #ff2d78, #a855f7, #3b82f6, transparent 90%);
+  animation: rotateBorder 3s linear infinite;
+  z-index: -1;
+}
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes rotateBorder { to { --angle: 360deg; } }
+
+/* ============================================================
+   TYPING ANIMATION
+   ============================================================ */
+.typing-text::after {
+  content: '|';
+  animation: blink 0.7s ease-in-out infinite;
+  color: var(--neon-pink);
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ============================================================
+   SPARKLE EFFECT
+   ============================================================ */
+@keyframes sparkle {
+  0% { transform: scale(0) rotate(0deg); opacity: 1; }
+  100% { transform: scale(1) rotate(180deg); opacity: 0; }
+}
+.sparkle {
+  animation: sparkle 0.6s ease forwards;
+}
+
+/* ============================================================
+   CARD ENTRANCE
+   ============================================================ */
+@keyframes cardEntrance {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.card-entrance {
+  animation: cardEntrance 0.5s ease both;
+}
+
+/* ============================================================
+   NAV ACTIVE INDICATOR
+   ============================================================ */
+.nav-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--grad-primary);
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: -1;
+}
+.nav-link.active::before { opacity: 0.1; }
+
+/* ============================================================
+   HERO GRID PATTERN
+   ============================================================ */
+.hero-grid-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(168,85,247,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,85,247,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
+}
+
+/* ============================================================
+   SCANLINES OVERLAY
+   ============================================================ */
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* ============================================================
+   NEON UNDERLINE
+   ============================================================ */
+.neon-underline {
+  position: relative;
+  display: inline-block;
+}
+.neon-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--grad-primary);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+.neon-underline:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* ============================================================
+   COUNT UP FLASH
+   ============================================================ */
+@keyframes countFlash {
+  0% { color: var(--neon-pink); text-shadow: 0 0 20px var(--neon-pink); }
+  100% { color: inherit; text-shadow: none; }
+}
+.count-flash { animation: countFlash 0.5s ease; }
+
+/* ============================================================
+   SAVE BUTTON
+   ============================================================ */
+.save-btn { transition: all var(--transition-fast); }
+.save-btn.saved { color: var(--neon-gold) !important; border-color: var(--neon-gold) !important; }
+.save-btn.saved i::before { content: '\f02e'; /* solid bookmark */ }
+
+/* ============================================================
+   FILTER TRANSITION
+   ============================================================ */
+.model-card {
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+}
+.model-card.filtering-out {
+  opacity: 0;
+  transform: scale(0.94);
+}
+.model-card.filtering-in {
+  opacity: 0;
+  transform: scale(0.94);
+  animation: filterIn 0.4s ease forwards;
+}
+@keyframes filterIn {
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ============================================================
+   PARALLAX LAYERS
+   ============================================================ */
+.parallax-layer {
+  will-change: transform;
+}
+
+/* ============================================================
+   GRADIENT BORDER ANIMATION
+   ============================================================ */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(255, 45, 120, 0.4); }
+  33% { border-color: rgba(168, 85, 247, 0.4); }
+  66% { border-color: rgba(59, 130, 246, 0.4); }
+}
+.border-anim { animation: borderGlow 4s ease infinite; }
+
+/* ============================================================
+   HOVER LIFT
+   ============================================================ */
+.hover-lift { transition: transform var(--transition-smooth), box-shadow var(--transition-smooth); }
+.hover-lift:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+/* ============================================================
+   SCROLL INDICATOR (hero)
+   ============================================================ */
+.scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: fadeIn 1s ease 1s both;
+}
+.scroll-indicator-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--neon-purple), transparent);
+  animation: scrollLineAnim 1.5s ease-in-out infinite;
+}
+@keyframes scrollLineAnim {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+/* ============================================================
+   NOTIFICATION BADGE
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+}
+.badge-pink { background: var(--neon-pink); color: #fff; }
+.badge-purple { background: var(--neon-purple); color: #fff; }
+.badge-new { background: var(--grad-warm); color: #fff; }
+
+/* ============================================================
+   IMAGE PARALLAX HOVER
+   ============================================================ */
+.img-hover-parallax {
+  overflow: hidden;
+  border-radius: inherit;
+}
+.img-hover-parallax img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.img-hover-parallax:hover img {
+  transform: scale(1.1) translateY(-5px);
+}
+
+/* ============================================================
+   NEON GLOW DIVIDER
+   ============================================================ */
+.neon-divider {
+  width: 80px;
+  height: 3px;
+  background: var(--grad-primary);
+  border-radius: 3px;
+  margin: 20px 0;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.6);
+}
+
+/* ============================================================
+   PAGE TRANSITION
+   ============================================================ */
+.page-enter {
+  animation: pageEnter 0.6s ease both;
+}
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   MARQUEE TEXT
+   ============================================================ */
+.marquee-wrapper {
+  overflow: hidden;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 16px 0;
+  background: rgba(168, 85, 247, 0.03);
+}
+.marquee-track {
+  display: flex;
+  gap: 60px;
+  width: max-content;
+  animation: marqueeScroll 20s linear infinite;
+}
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.marquee-item span { color: var(--neon-pink); }
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   INTERACTIVE HOVER STATE HELPERS
+   ============================================================ */
+.interactive { transition: all var(--transition-fast); }
+.interactive:hover { opacity: 0.8; }
+.interactive:active { transform: scale(0.97); }
