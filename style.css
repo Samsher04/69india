@@ -514,6 +514,7 @@ body::before {
     justify-content: space-between;
     height: 100%;
     gap: 32px;
+    padding-top: 13px;
 }
 
 .nav-logo {
@@ -824,7 +825,7 @@ body::before {
 }
 
 .hero-title .line-3 {
-    color: transparent;
+    /* color: transparent; */
     -webkit-text-stroke: 2px rgba(255, 255, 255, 0.2);
 }
 
@@ -3798,6 +3799,130 @@ body::before {
 
   .footer-dmca img{
     width:140px;
+  }
+
+}
+
+/* HERO LOCATION DROPDOWN */
+
+.hero-location-dropdown{
+  display:flex;
+  justify-content:center;
+  margin-bottom: 15px;
+}
+
+.location-select-wrap{
+  position:relative;
+
+  width:350px;
+  max-width:100%;
+}
+
+.location-select-wrap i{
+  position:absolute;
+
+  left:18px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  z-index:2;
+
+  font-size:18px;
+
+  background:linear-gradient(
+    135deg,
+    #ff2d78 0%,
+    #a855f7 50%,
+    #3b82f6 100%
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.location-select{
+  width:100%;
+  height:64px;
+
+  padding:0 20px 0 50px;
+
+  border-radius:20px;
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  background:
+    rgba(255,255,255,0.05);
+
+  backdrop-filter:blur(14px);
+
+  color:#fff;
+
+  font-size:16px;
+  font-weight:600;
+
+  outline:none;
+
+  cursor:pointer;
+
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+
+  transition:0.35s ease;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* OPTIONS */
+.location-select option{
+  background:#0d1220;
+  color:#fff;
+}
+
+/* HOVER */
+.location-select:hover{
+  border-color:rgba(168,85,247,0.45);
+
+  box-shadow:
+    0 15px 35px rgba(168,85,247,0.18);
+}
+
+/* FOCUS */
+.location-select:focus{
+  border-color:#a855f7;
+
+  box-shadow:
+    0 0 0 4px rgba(168,85,247,0.12);
+}
+
+/* CUSTOM ARROW */
+.location-select-wrap::after{
+  content:"\f078";
+
+  font-family:"Font Awesome 6 Free";
+  font-weight:900;
+
+  position:absolute;
+
+  right:18px;
+  top:50%;
+
+  transform:translateY(-50%);
+
+  color:#a855f7;
+
+  pointer-events:none;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+  .location-select{
+    height:50px;
+    border-radius:18px;
+    font-size:15px;
   }
 
 }

@@ -74,6 +74,8 @@
     <!-- Scroll Progress -->
     <div id="scroll-progress"></div>
 
+    
+
     <!-- Custom Cursor -->
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
@@ -201,6 +203,9 @@
     </nav>
 
     <main role="main">
+
+      
+
       <!-- ========== HERO ========== -->
       <section class="hero" aria-label="Hero section">
         <!-- Background effects -->
@@ -239,6 +244,66 @@
             ></i>
           </div>
         </div>
+
+              <!-- LOCATION DROPDOWN -->
+<div class="hero-location-dropdown">
+
+  <div class="location-select-wrap">
+
+    <i class="fas fa-map-marker-alt"></i>
+
+    <select
+      id="locationSelect"
+      class="location-select"
+      onchange="handleLocationRedirect(this.value)"
+    >
+      <option value="">Choose Location</option>
+
+      <option value="/koregaon-park.html">
+        Koregaon Park
+      </option>
+
+      <option value="/viman-nagar.html">
+        Viman Nagar
+      </option>
+
+      <option value="/baner.html">
+        Baner
+      </option>
+
+      <option value="/hadapsar.html">
+        Hadapsar
+      </option>
+
+      <option value="/kothrud.html">
+        Kothrud
+      </option>
+
+      <option value="/wakad.html">
+        Wakad
+      </option>
+
+      <option value="/pimpri.html">
+        Pimpri Chinchwad
+      </option>
+
+      <option value="/hinjewadi.html">
+        Hinjewadi
+      </option>
+
+      <option value="/katraj.html">
+        Katraj
+      </option>
+
+      <option value="/camp.html">
+        Camp Area
+      </option>
+
+    </select>
+
+  </div>
+
+</div>
 
         <div class="hero-float hero-float-2">
           <div
@@ -370,6 +435,8 @@
           </div>
         </div>
       </section>
+
+
 
       <!-- ========== MARQUEE ========== -->
       <div class="marquee-wrapper" style="position: relative; z-index: 2">

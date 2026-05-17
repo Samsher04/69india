@@ -135,7 +135,6 @@ const models = [
 const container = document.getElementById("models-container");
 
 models.forEach((model) => {
-
   container.innerHTML += `
 
     <article
@@ -207,23 +206,23 @@ models.forEach((model) => {
             >
 
               <!-- CALL BUTTON -->
-              <a
-                href="tel:+${model.phone}"
-                class="like-btn call-btn2"
-                onclick="event.stopPropagation()"
-              >
-                <i class="fas fa-phone"></i>
-              </a>
+           <a
+            href="tel:+${model.phone}"
+            class="call-btn2"
+            onclick="event.stopPropagation()"
+          >
+            <i class="fas fa-phone"></i>
+          </a>
 
-              <!-- WHATSAPP BUTTON -->
-              <a
-                href="https://wa.me/${model.phone}"
-                target="_blank"
-                class="like-btn whatsapp-icon"
-                onclick="event.stopPropagation()"
-              >
-                <i class="fab fa-whatsapp"></i>
-              </a>
+          <!-- WHATSAPP BUTTON -->
+          <a
+            href="https://wa.me/${model.phone}"
+            target="_blank"
+            class="whatsapp-icon"
+            onclick="event.stopPropagation()"
+          >
+            <i class="fab fa-whatsapp"></i>
+          </a>
 
             </div>
 
@@ -238,62 +237,60 @@ models.forEach((model) => {
   `;
 });
 
+const sliderModels = [
+  {
+    name: "Sophia Luxe",
+    city: "Delhi",
+    image: "img/1.jpg",
+    badge: "🔥 HOT",
+    phone: "919999999999",
+  },
 
- const sliderModels = [
-    {
-      name: "Sophia Luxe",
-      city: "Delhi",
-      image: "img/1.jpg",
-      badge: "🔥 HOT",
-      phone: "919999999999",
-    },
+  {
+    name: "Elena Rose",
+    city: "Mumbai",
+    image: "img/2.jpg",
+    badge: "⭐ VIP",
+    phone: "919999999998",
+  },
 
-    {
-      name: "Elena Rose",
-      city: "Mumbai",
-      image: "img/2.jpg",
-      badge: "⭐ VIP",
-      phone: "919999999998",
-    },
+  {
+    name: "Natasha Queen",
+    city: "Bangalore",
+    image: "img/3.jpg",
+    badge: "🌟 STAR",
+    phone: "919999999997",
+  },
 
-    {
-      name: "Natasha Queen",
-      city: "Bangalore",
-      image: "img/3.jpg",
-      badge: "🌟 STAR",
-      phone: "919999999997",
-    },
+  {
+    name: "Angelina Star",
+    city: "Kolkata",
+    image: "img/4.jpg",
+    badge: "🔥 HOT",
+    phone: "919999999996",
+  },
 
-    {
-      name: "Angelina Star",
-      city: "Kolkata",
-      image: "img/4.jpg",
-      badge: "🔥 HOT",
-      phone: "919999999996",
-    },
+  {
+    name: "Kiara Night",
+    city: "Pune",
+    image: "img/5.jpg",
+    badge: "⭐ VIP",
+    phone: "919999999995",
+  },
 
-    {
-      name: "Kiara Night",
-      city: "Pune",
-      image: "img/5.jpg",
-      badge: "⭐ VIP",
-      phone: "919999999995",
-    },
+  {
+    name: "Ruby Queen",
+    city: "Hyderabad",
+    image: "img/6.jpg",
+    badge: "🌟 STAR",
+    phone: "919999999994",
+  },
+];
 
-    {
-      name: "Ruby Queen",
-      city: "Hyderabad",
-      image: "img/6.jpg",
-      badge: "🌟 STAR",
-      phone: "919999999994",
-    },
-  ];
+const sliderTrack = document.getElementById("slider-track");
 
-  const sliderTrack = document.getElementById("slider-track");
-
-  sliderModels.forEach((model) => {
-
-    sliderTrack.innerHTML += `
+sliderModels.forEach((model) => {
+  sliderTrack.innerHTML += `
 
       <article class="slider-card">
 
@@ -352,4 +349,4 @@ models.forEach((model) => {
       </article>
 
     `;
-  });
+});
