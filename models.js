@@ -140,7 +140,6 @@ models.forEach((model) => {
 
     <article
       class="model-card tilt-card reveal"
-      onclick="window.location='details.html'"
     >
 
       <div class="tilt-card-shine"></div>
